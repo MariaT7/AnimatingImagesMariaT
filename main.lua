@@ -1,5 +1,4 @@
-
-
+---------------------------------------------------------------------------------------
 -- Title: AnimatingImages
 -- Name: Maria T
 -- Course: ICS2O/3C
@@ -14,8 +13,34 @@ display.setStatusBar(display.HiddenStatusBar)
 -- global variables
 scrollSpeed = 2.25
 
+-- background sound
+local bSound = audio.loadSound("Sounds/background.mp3") -- Setting a variable to an mp3 file 
+local bSoundChannel
+	bSoundChannel = audio.play(bSound)
+
+
 -- background image with width and height
 local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
+
+-- declare a locale variable
+local textObject
+
+-- create the text object at position (300, 500) with a size 50
+textObject = display.newText ("Animating Images!!", 100, 130, nil, 50)
+
+-- anchor the textObject from the top left corner
+textObject.anchorX= 0
+textObject.anchorY= 0
+
+-- set the colour of the text object
+textObject:setTextColor (255/255, 204/255, 255/255)
+
+-- create another text variable
+local textObjectSignature
+
+--sign my name (dispaly.contentCenterX, display.CenterX)
+textObjectSignature = display.newText ("By Maria (:", 180, 200, nil, 30)
+---------------------------
 
 -- characheter image with width and height
 local Google = display.newImageRect("Images/Google.png", 350, 350)
@@ -27,13 +52,6 @@ Google.alpha = 0
 Google.x = 200
 Google.y = display.contentHeight/3
 
--- background sound
-local bSound = audio.loadSound("Sounds/background.mp3") -- Setting a variable to an mp3 file 
-local bSoundChannel
-
-
-
-	bSoundChannel = audio.play(bSound)
 
 -- Function: MoveGoo
 -- Input: this function accepts an event listener
@@ -75,8 +93,6 @@ local function Movesphere(event)
 	-- change the transparency of the sphere every time is moves so that it fades out
 	sphere.alpha = sphere.alpha - 0.00001
 end
-
-
 
 -- sphere will be called over and over again
 Runtime:addEventListener("enterFrame", Movesphere)
@@ -152,7 +168,6 @@ end
 
 -- Arrow will be called over and over again
 Runtime:addEventListener("enterFrame", MoveArrow)
-
 
 
 
